@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
@@ -20,6 +23,8 @@ namespace WishlistApps
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            AppCenter.Start("6c40a63a-6fc8-4dec-bb7b-d20b0fbe08f4", typeof(Analytics));
+            AppCenter.Start("6c40a63a-6fc8-4dec-bb7b-d20b0fbe08f4", typeof(Crashes));
         }
 
         /// <summary>

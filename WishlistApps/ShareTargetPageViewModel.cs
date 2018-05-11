@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AppCenter.Analytics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -69,6 +70,7 @@ namespace WishlistApps
 
                 if (!webLink.ToString().Contains("www.microsoft.com/store"))
                 {
+                    Analytics.TrackEvent("Wrong share link");
                     shareOperation.ReportError("Data doesn't contain link to Microsoft Store.");
                     return;
                 }
@@ -100,6 +102,7 @@ namespace WishlistApps
             var database = new Database();
             await database.Add(AppInfo);
             App.InvokeAppAdded();
+            Analytics.TrackEvent("NewAppAdded");
             shareOperation.ReportCompleted();
         }
 

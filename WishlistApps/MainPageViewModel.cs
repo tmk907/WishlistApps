@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AppCenter.Analytics;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -48,12 +49,14 @@ namespace WishlistApps
             await Launcher.LaunchUriAsync(new Uri($"ms-windows-store://pdp/?ProductId={info.AppId}"));
             info.IsInstalledClicked = true;
             await database.SaveAll(Apps.ToList());
+            Analytics.TrackEvent("WishlistAppInstall");
         }
 
         public async Task Remove(ApplicationInfo info)
         {
             Apps.Remove(info);
             await database.Remove(info);
+            Analytics.TrackEvent("WishlistAppRemove");
         }
     }
 }
