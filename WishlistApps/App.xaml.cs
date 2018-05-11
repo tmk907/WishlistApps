@@ -26,8 +26,7 @@ namespace WishlistApps
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
-            AppCenter.Start("6c40a63a-6fc8-4dec-bb7b-d20b0fbe08f4", typeof(Analytics));
-            AppCenter.Start("6c40a63a-6fc8-4dec-bb7b-d20b0fbe08f4", typeof(Crashes));
+            AppCenter.Start("6c40a63a-6fc8-4dec-bb7b-d20b0fbe08f4", typeof(Crashes), typeof(Analytics));
         }
 
         /// <summary>

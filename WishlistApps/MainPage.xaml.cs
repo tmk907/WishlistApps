@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Core;
 using Windows.System;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -20,7 +19,18 @@ namespace WishlistApps
         public MainPage()
         {
             this.InitializeComponent();
-            VM = new MainPageViewModel();            
+            VM = new MainPageViewModel();
+
+            //var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+            //coreTitleBar.ExtendViewIntoTitleBar = true;
+            //Window.Current.SetTitleBar(trickyTitleBar);
+            
+            //remove the solid-colored backgrounds behind the caption controls and system back button
+
+            //var viewTitleBar = ApplicationView.GetForCurrentView().TitleBar;
+            //viewTitleBar.ButtonBackgroundColor = Colors.Transparent;
+            //viewTitleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+            //viewTitleBar.ButtonForegroundColor = (Color)Resources["SystemBaseHighColor"];
 
             ReviewReminder();
         }
@@ -82,6 +92,11 @@ namespace WishlistApps
         {
             public const string IsReviewed = "isreviewed5";
             public const string LastReviewRemind = "lastreviewremind5";
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
