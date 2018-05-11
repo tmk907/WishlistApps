@@ -50,6 +50,12 @@ namespace WishlistApps
             info.IsInstalledClicked = true;
             await database.SaveAll(Apps.ToList());
             Analytics.TrackEvent("WishlistAppInstall");
+            Apps.Clear();
+            var list = await database.GetAll();
+            foreach (var item in list)
+            {
+                Apps.Add(item);
+            }
         }
 
         public async Task Remove(ApplicationInfo info)

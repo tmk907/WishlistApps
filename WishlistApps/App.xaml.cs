@@ -4,6 +4,9 @@ using Microsoft.AppCenter.Crashes;
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Core;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -49,7 +52,7 @@ namespace WishlistApps
                 {
                     //TODO: Load state from previously suspended application
                 }
-
+                CustomizeUI();
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
             }
@@ -92,11 +95,24 @@ namespace WishlistApps
             deferral.Complete();
         }
 
+        private void CustomizeUI()
+        {
+            var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+            coreTitleBar.ExtendViewIntoTitleBar = true;
+
+            //remove the solid-colored backgrounds behind the caption controls and system back button
+            var viewTitleBar = ApplicationView.GetForCurrentView().TitleBar;
+            viewTitleBar.ButtonBackgroundColor = Colors.Transparent;
+            viewTitleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+            viewTitleBar.ButtonForegroundColor = (Color)Resources["SystemBaseHighColor"];
+        }
+
         protected override async void OnShareTargetActivated(ShareTargetActivatedEventArgs args)
         {
             var page = new ShareTargetPage();
             await page.SetShareOperation(args.ShareOperation);
             Window.Current.Content = page;
+            CustomizeUI();
             Window.Current.Activate();
         }
 

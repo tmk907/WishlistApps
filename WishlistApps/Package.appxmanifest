@@ -24,7 +24,7 @@
             <uap:ShowOn Tile="square310x310Logo" />
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#018574" />
+        <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#008272" />
       </uap:VisualElements>
       <Extensions>
         <uap:Extension Category="windows.shareTarget">

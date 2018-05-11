@@ -9,10 +9,17 @@
                 <ResourceDictionary x:Key="Dark">
                     <SolidColorBrush x:Key="ListViewItemBackgroundSecond" Color="#FF171717"/>
                     <SolidColorBrush x:Key="ListViewItemBackgroundNormal" Color="#FF000000"/>
+                    <SolidColorBrush x:Key="MyApplicationAccentBrush" Color="#FF00B294"/>
+                    <SolidColorBrush x:Key="AppInstalledBrush" Color="#FFE81123"/>
+                    <RevealBorderBrush x:Key="MyRevealBrush" Color="#FF00B294" FallbackColor="#FF00B294"/>
+
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Light">
                     <SolidColorBrush x:Key="ListViewItemBackgroundSecond" Color="#FFF2F2F2"/>
                     <SolidColorBrush x:Key="ListViewItemBackgroundNormal" Color="#FFFFFFFF"/>
+                    <SolidColorBrush x:Key="MyApplicationAccentBrush" Color="#FF008272"/>
+                    <SolidColorBrush x:Key="AppInstalledBrush" Color="#FFE81123"/>
+                    <RevealBorderBrush x:Key="MyRevealBrush" Color="#FF008272" FallbackColor="#FF008272"/>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>

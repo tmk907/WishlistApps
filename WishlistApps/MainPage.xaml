@@ -8,7 +8,8 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
-        <SolidColorBrush x:Key="ListViewItemBackgroundSecond2" Color="AliceBlue"/>
+        <local:IsInstalledToColorConverter x:Key="IsInstalledToColorConverter"/>
+        <local:InstalledForegroundColorConverter x:Key="InstalledForegroundColorConverter"/>
         <Style x:Key="ListViewItemContainerStyle" TargetType="ListViewItem">
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -17,7 +18,7 @@
             <Setter Property="Margin" Value="0,0,12,0"/>
             <Setter Property="Padding" Value="8,0,12,0"/>
             <Setter Property="BorderThickness" Value="0,0,0,1"/>
-            <Setter Property="BorderBrush" Value="{StaticResource SystemControlBackgroundAccentRevealBorderBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource MyRevealBrush}"/>
         </Style>
         <Style x:Key="ButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}">
             <Setter Property="Width" Value="120"/>
@@ -45,7 +46,7 @@
                     <Button.Content>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Install" Margin="4,0,8,0"/>
-                            <SymbolIcon Symbol="Download"/>
+                            <SymbolIcon Symbol="Download" Foreground="{x:Bind IsInstalledClicked, Converter={StaticResource InstalledForegroundColorConverter}}"/>
                         </StackPanel>
                     </Button.Content>
                 </Button>
@@ -57,36 +58,52 @@
                     <Button.Content>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Remove" Margin="4,0,8,0"/>
-                            <SymbolIcon Symbol="Cancel"/>
+                            <SymbolIcon Symbol="Cancel" Foreground="{x:Bind IsInstalledClicked, Converter={StaticResource IsInstalledToColorConverter}}"/>
                         </StackPanel>
                     </Button.Content>
                 </Button>
             </Grid>
         </DataTemplate>
     </Page.Resources>
-    <Grid Background="{StaticResource SystemControlAcrylicWindowBrush}">
+    <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="24"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock
+        <TextBlock 
+            x:Name="AppTitle" 
             Grid.Row="0"
-            Text="Your wishlist"
-            Margin="12"
-            Style="{StaticResource SubheaderTextBlockStyle}"/>
-        <ListView
-            Grid.Row="1"
-            Margin="12"
-            SelectionMode="None"
-            IsItemClickEnabled="False"
-            ItemsSource="{x:Bind VM.Apps}"
-            ItemTemplate="{StaticResource AppInfoDataTemplate}"
-            ItemContainerStyle="{StaticResource ListViewItemContainerStyle}">
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <ItemsStackPanel Orientation="Vertical" />
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-        </ListView>
+            xmlns:appmodel="using:Windows.ApplicationModel"
+            Text="{x:Bind appmodel:Package.Current.DisplayName}" 
+            Style="{StaticResource CaptionTextBlockStyle}"
+            Margin="12,8,0,0"
+            VerticalAlignment="Center"
+            IsHitTestVisible="False" 
+            Canvas.ZIndex="1"/>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock
+                Grid.Row="0"
+                Text="Your wishlist"
+                Margin="12"
+                Style="{StaticResource SubheaderTextBlockStyle}"/>
+            <ListView
+                Grid.Row="1"
+                Margin="12"
+                SelectionMode="None"
+                IsItemClickEnabled="False"
+                ItemsSource="{x:Bind VM.Apps}"
+                ItemTemplate="{StaticResource AppInfoDataTemplate}"
+                ItemContainerStyle="{StaticResource ListViewItemContainerStyle}">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ItemsStackPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+            </ListView>
+        </Grid>
     </Grid>
 </Page>

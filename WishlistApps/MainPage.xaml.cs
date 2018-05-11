@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Core;
 using Windows.System;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -19,7 +20,7 @@ namespace WishlistApps
         public MainPage()
         {
             this.InitializeComponent();
-            VM = new MainPageViewModel();
+            VM = new MainPageViewModel();            
 
             ReviewReminder();
         }

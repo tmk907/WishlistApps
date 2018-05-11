@@ -6,73 +6,88 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
     <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
-        <StackPanel
-            Visibility="{x:Bind VM.IsAppOnWishlist, Mode=OneWay}"
-            BorderBrush="{StaticResource SystemControlBackgroundAccentRevealBorderBrush}"
-            BorderThickness="2"
-            Padding="24"
-            HorizontalAlignment="Center"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock 
+            x:Name="AppTitle" 
+            Grid.Row="0"
+            xmlns:appmodel="using:Windows.ApplicationModel"
+            Text="{x:Bind appmodel:Package.Current.DisplayName}" 
+            Style="{StaticResource CaptionTextBlockStyle}"
+            Margin="12,8,0,0"
             VerticalAlignment="Center"
-            Orientation="Vertical">
-            <TextBlock 
-                Style="{StaticResource SubtitleTextBlockStyle}"
-                Text="This application is already on your wishlist."
-                />
-            <TextBlock 
-                Margin="0,12,0,24"
-                Style="{StaticResource BodyTextBlockStyle}"
-                Text="{x:Bind VM.AppName, Mode=OneWay}"
-                />
-            <Button 
-                Grid.Column="1"
-                Click="{x:Bind VM.Cancel}"
-                Content="Close"
-                Width="120"
+            IsHitTestVisible="False" 
+            Canvas.ZIndex="1"/>
+        <Grid Grid.Row="1">
+            <StackPanel
+                Visibility="{x:Bind VM.IsAppOnWishlist, Mode=OneWay}"
+                BorderBrush="{StaticResource SystemControlBackgroundAccentRevealBorderBrush}"
+                BorderThickness="2"
+                Padding="24"
                 HorizontalAlignment="Center"
-                Style="{StaticResource ButtonRevealStyle}"
-                />
-        </StackPanel>
-        <StackPanel
-            Visibility="{x:Bind VM.IsNewApp, Mode=OneWay}"
-            BorderBrush="{StaticResource SystemControlBackgroundAccentRevealBorderBrush}"
-            BorderThickness="2"
-            Padding="24"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Orientation="Vertical">
-            <TextBlock 
-                Style="{StaticResource SubtitleTextBlockStyle}"
-                Text="Do you want to add this app to wishlist?"
-                />
-            <TextBlock 
-                Margin="0,12,0,24"
-                Style="{StaticResource BodyTextBlockStyle}"
-                Text="{x:Bind VM.AppName, Mode=OneWay}"
-                />
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button
-                    Grid.Column="0"
-                    Click="{x:Bind VM.AddApp}"
-                    Content="Yes"
-                    Width="120"
-                    HorizontalAlignment="Center"
-                    Style="{StaticResource ButtonRevealStyle}"
+                VerticalAlignment="Center"
+                Orientation="Vertical">
+                <TextBlock 
+                    Style="{StaticResource SubtitleTextBlockStyle}"
+                    Text="This application is already on your wishlist."
+                    />
+                <TextBlock 
+                    Margin="0,12,0,24"
+                    Style="{StaticResource BodyTextBlockStyle}"
+                    Text="{x:Bind VM.AppName, Mode=OneWay}"
                     />
                 <Button 
                     Grid.Column="1"
                     Click="{x:Bind VM.Cancel}"
-                    Content="No"
+                    Content="Close"
                     Width="120"
                     HorizontalAlignment="Center"
                     Style="{StaticResource ButtonRevealStyle}"
                     />
-            </Grid>
-        </StackPanel>
+            </StackPanel>
+            <StackPanel
+                Visibility="{x:Bind VM.IsNewApp, Mode=OneWay}"
+                BorderBrush="{StaticResource SystemControlBackgroundAccentRevealBorderBrush}"
+                BorderThickness="2"
+                Padding="24"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Vertical">
+                <TextBlock 
+                    Style="{StaticResource SubtitleTextBlockStyle}"
+                    Text="Do you want to add this app to wishlist?"
+                    />
+                <TextBlock 
+                    Margin="0,12,0,24"
+                    Style="{StaticResource BodyTextBlockStyle}"
+                    Text="{x:Bind VM.AppName, Mode=OneWay}"
+                    />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Grid.Column="0"
+                        Click="{x:Bind VM.AddApp}"
+                        Content="Yes"
+                        Width="120"
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource ButtonRevealStyle}"
+                        />
+                    <Button 
+                        Grid.Column="1"
+                        Click="{x:Bind VM.Cancel}"
+                        Content="No"
+                        Width="120"
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource ButtonRevealStyle}"
+                        />
+                </Grid>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

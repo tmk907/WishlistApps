@@ -105,7 +105,10 @@
     </Compile>
     <Compile Include="ApplicationInfo.cs" />
     <Compile Include="BindableBase.cs" />
+    <Compile Include="ColorsHelper.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="InstalledForegroundColorConverter.cs" />
+    <Compile Include="IsInstalledToColorConverter.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
