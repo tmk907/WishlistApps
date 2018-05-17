@@ -6,7 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+    <Page.Resources>
+        <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Page.Resources>
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="24"/>
             <RowDefinition/>
@@ -15,7 +18,7 @@
             x:Name="AppTitle" 
             Grid.Row="0"
             xmlns:appmodel="using:Windows.ApplicationModel"
-            Text="{x:Bind appmodel:Package.Current.DisplayName}" 
+            Text="WishlistApps" 
             Style="{StaticResource CaptionTextBlockStyle}"
             Margin="12,8,0,0"
             VerticalAlignment="Center"
@@ -23,8 +26,8 @@
             Canvas.ZIndex="1"/>
         <Grid Grid.Row="1">
             <StackPanel
-                Visibility="{x:Bind VM.IsAppOnWishlist, Mode=OneWay}"
-                BorderBrush="{StaticResource SystemControlBackgroundAccentRevealBorderBrush}"
+                Visibility="{x:Bind VM.IsAppOnWishlist, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                BorderBrush="{StaticResource SystemControlBackgroundAccentBrush}"
                 BorderThickness="2"
                 Padding="24"
                 HorizontalAlignment="Center"
@@ -45,12 +48,11 @@
                     Content="Close"
                     Width="120"
                     HorizontalAlignment="Center"
-                    Style="{StaticResource ButtonRevealStyle}"
                     />
             </StackPanel>
             <StackPanel
-                Visibility="{x:Bind VM.IsNewApp, Mode=OneWay}"
-                BorderBrush="{StaticResource SystemControlBackgroundAccentRevealBorderBrush}"
+                Visibility="{x:Bind VM.IsNewApp, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                BorderBrush="{StaticResource SystemControlBackgroundAccentBrush}"
                 BorderThickness="2"
                 Padding="24"
                 HorizontalAlignment="Center"
@@ -76,7 +78,6 @@
                         Content="Yes"
                         Width="120"
                         HorizontalAlignment="Center"
-                        Style="{StaticResource ButtonRevealStyle}"
                         />
                     <Button 
                         Grid.Column="1"
@@ -84,7 +85,6 @@
                         Content="No"
                         Width="120"
                         HorizontalAlignment="Center"
-                        Style="{StaticResource ButtonRevealStyle}"
                         />
                 </Grid>
             </StackPanel>
