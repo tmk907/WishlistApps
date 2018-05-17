@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="60490polApki.25009E4F7D862" Publisher="CN=EFEE17C1-DC2A-4553-8CE6-82B55CBC72FE" Version="1.1.0.0" />
+  <Identity Name="60490polApki.25009E4F7D862" Publisher="CN=EFEE17C1-DC2A-4553-8CE6-82B55CBC72FE" Version="1.2.0.0" />
   <mp:PhoneIdentity PhoneProductId="bad88adc-df16-4839-bcca-1974dd0bda4b" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>WishlistApps</DisplayName>
