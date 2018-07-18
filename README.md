@@ -1,4 +1,7 @@
 # WishlistApps
+
+[![Build status](https://build.appcenter.ms/v0.1/apps/559e7177-3a61-4d66-bce4-d99eba528863/branches/master/badge)](https://appcenter.ms)
+
 This app add missing wish list functionality to Microsoft Store. Now you can add app/game to list and download it later.
 
 How to add application to wish list?
